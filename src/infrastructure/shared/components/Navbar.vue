@@ -1,6 +1,6 @@
 <template>
     <div class="nav-container">
-        <router-link class="nav-element" to="/id">Pokemon</router-link>
+        <router-link class="nav-element" to="/pokemon/id">Pokemon</router-link>
         <router-link class="nav-element" to="/about">About</router-link>
         <router-link class="nav-element" to="/">Home</router-link>
     </div>

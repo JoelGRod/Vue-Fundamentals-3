@@ -4,20 +4,31 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 // Infrastructure Pages (Lazy loaded)
 
 const routes = [
-    { 
-        path: '/', 
+    {
+        path: '/',
         component: () => import(/* webpackChunkName: "HomePage" */ '../domain/pokemon/pages/HomePage')
     },
-    { 
-        path: '/about', 
+    {
+        path: '/about',
         component: () => import(/* webpackChunkName: "AboutPage" */ '../domain/pokemon/pages/AboutPage')
     },
-    { 
-        path: '/:id', 
-        component: () => import(/* webpackChunkName: "PokemonPage" */ '../domain/pokemon/pages/PokemonPage')
+    {
+        path: '/pokemon/:id',
+        name: 'pokemon-id',
+        component: () => import(/* webpackChunkName: "PokemonPage" */ '../domain/pokemon/pages/PokemonPage'),
+        props: (route) => {
+            const id = Number(route.params.id)
+            return isNaN(id) ?
+                { pokemonId: 1 } :
+                {
+                    pokemonId: id,
+                    name: 'something for attrs',
+                    lastname: 'something for attrs'
+                }
+        }
     },
-    { 
-        path: '/:pathMatch(.*)*', 
+    {
+        path: '/:pathMatch(.*)*',
         component: () => import(/* webpackChunkName: "NotFoundPage" */ '../infrastructure/shared/pages/NotFoundPage')
     }
 ]
