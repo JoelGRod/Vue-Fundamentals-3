@@ -5,11 +5,13 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes = [
     {
-        path: '/',
+        path: '/home',
+        name: 'home',
         component: () => import(/* webpackChunkName: "HomePage" */ '../domain/pokemon/pages/HomePage')
     },
     {
         path: '/about',
+        name: 'about',
         component: () => import(/* webpackChunkName: "AboutPage" */ '../domain/pokemon/pages/AboutPage')
     },
     {
@@ -24,7 +26,7 @@ const routes = [
     {
         path: '/:pathMatch(.*)*',
         component: () => import(/* webpackChunkName: "NotFoundPage" */ '../infrastructure/shared/pages/NotFoundPage')
-    }
+    },
 ]
 
 const router = createRouter({
