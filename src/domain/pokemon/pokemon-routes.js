@@ -1,5 +1,9 @@
 const routes = [
     {
+        path: '',
+        redirect: { name: 'pokemon-home' }
+    },
+    {
         path: 'home',
         name: 'pokemon-home',
         component: () => import(/* webpackChunkName: "HomePage" */ '@/domain/pokemon/pages/HomePage')
@@ -17,10 +21,6 @@ const routes = [
             const id = Number(route.params.id)
             return isNaN(id) ? { pokemonId: 1 } : { pokemonId: id }
         }
-    },
-    {
-        path: '',
-        redirect: { name: 'pokemon-home' }
     }
 ]
 
