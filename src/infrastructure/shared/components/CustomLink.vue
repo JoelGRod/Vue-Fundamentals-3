@@ -1,18 +1,19 @@
 <template>
   <a
     v-if="isExternalLink"
-    class="nav-element normal-link "
+    class="nav-element normal-link"
     :href="link.to"
-    target="_blank"
-  >
+    target="_blank">
     {{ link.name }}
   </a>
 
-  <router-link v-else :to="link.to" v-slot="{ href, isActive }">
-    <a
-      :href="href"
-      :class="isActive ? 'nav-element active-link' : 'nav-element normal-link'"
-    >
+  <router-link
+    v-else
+    class="nav-element"
+    :to="haveParams"
+    v-slot="{ isActive }">
+    <!-- v-slot -> href, isActive -->
+    <a :class="isActive ? 'nav-element active-link' : 'nav-element normal-link'">
       {{ link.name }}
     </a>
   </router-link>
@@ -30,6 +31,11 @@ export default {
     isExternalLink() {
       return this.link.to.startsWith("http");
     },
+    haveParams() {
+      return this.link.id === undefined ?
+        { name: this.link.to } : 
+        { name: this.link.to, params: { id: this.link.id } }
+    }
   },
 };
 </script>
@@ -37,7 +43,6 @@ export default {
 <style>
 .nav-container .nav-element {
   font-weight: bold;
-  color: #2c3e50;
   text-decoration: none;
   padding: 0 1rem;
 }
@@ -45,6 +50,6 @@ export default {
   color: #42b983;
 }
 .normal-link {
-  color: #c6c5c5;
+  color: #2c3e50;
 }
 </style>

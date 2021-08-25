@@ -17,11 +17,15 @@ import { defineAsyncComponent } from 'vue'
 export default {
     data() {
         return {
-            id: 23,
+            // id: 23,
             links: [
-                { to: 'home', name: 'Home' },
-                { to: 'pokemon/1', name: 'Pokemon' },
-                { to: 'about', name: 'About' },
+                // Pokemon
+                { to: 'pokemon-home', name: 'Pokemon-Home' },
+                { to: 'pokemon-id', name: 'Pokemon', id: 23 },
+                { to: 'pokemon-about', name: 'Pokemon-About' },
+                // DBZ
+                { to: 'dbz-characters', name: 'DBZ-Characters' },
+                { to: 'dbz-about', name: 'DBZ-About' },
                 { to: 'https://www.google.es/', name: 'Google' },
             ]
         }
