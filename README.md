@@ -1,4 +1,4 @@
-# fundamentals - Router
+# VUE fundamentals - Router
 
 ## Project setup
 ```
